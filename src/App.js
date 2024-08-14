@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Component from "./components/component";
+import ColorChangeComponent from "./components/colorChangeComponent";
+import { useState } from "react";
+import PageTitle from "./components/pageTitle";
+import PostCreator from "./components/postCreator";
 
 function App() {
+  const [title, setTitle] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Component />
+      <ColorChangeComponent />
+      <hr></hr>
+      <input
+        type="text"
+        onChange={(e) => {
+          setTitle(e.target.value);
+        }}
+      />
+      <PageTitle title={title} />
+      <PostCreator />
     </div>
   );
 }
